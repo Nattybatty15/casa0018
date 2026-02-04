@@ -47,10 +47,10 @@ uint8_t tensor_arena[kTensorArenaSize];
 
 // This constant represents the range of x values our model was trained on,
 // which is from 0 to (2 * Pi). We approximate Pi to avoid requiring additional libraries.
-const float kXrange = 2.f * 3.14159265359f;
+const float kXrange = 3.0f;
 
 // This constant determines number of inferences to perform across range of x values defined above. 
-const int kInferencesPerCycle = 8000;
+const int kInferencesPerCycle = 100;
 
 // A counter to keep track of how many inferences we have performed.
 int inference_count = 0;
@@ -213,5 +213,7 @@ void loop() {
   // the total number per cycle
   inference_count += 1;
   if (inference_count >= kInferencesPerCycle) inference_count = 0;
+  
+  delay(100);
  
 }
